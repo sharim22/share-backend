@@ -1,3 +1,7 @@
+// Test route for backend health check
+app.get('/test', (req, res) => {
+    res.json({ success: true, message: 'Backend is working!' });
+});
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
