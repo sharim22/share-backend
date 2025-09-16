@@ -1,7 +1,3 @@
-// Test route for backend health check
-app.get('/test', (req, res) => {
-    res.json({ success: true, message: 'Backend is working!' });
-});
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
@@ -21,6 +17,11 @@ const accessRouter = require('./routes/access')
 
 app.use('/upload', uploadRouter)
 app.use('/access', accessRouter)
+
+// Test route for backend health check
+app.get('/test', (req, res) => {
+    res.json({ success: true, message: 'Backend is working!' });
+});
 
 // Cleanup function to delete expired files
 const cleanupExpiredFiles = () => {
@@ -49,7 +50,7 @@ const cleanupExpiredFiles = () => {
 // Run cleanup every 30 seconds
 setInterval(cleanupExpiredFiles, 30000)
 
-app.listen(1234, () => {
+app.listen(4000, () => {
     console.log("[*] Server is up and running ...")
     console.log("[*] Auto-cleanup enabled - files will be deleted after 2 minutes")
 })
